@@ -6,6 +6,7 @@ import com.hateoasmapper.service.ILectureService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class LectureController {
     this.lectureService = lectureService;
   }
 
-  @GetMapping(produces = {"application/hal+json"})
+  @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE })
   ResponseEntity<CollectionModel<LectureRef>> getAllLectureRefList() {
     List<LectureRef> lectureRefList = this.lectureService.getAllLectureRefList();
 
